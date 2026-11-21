@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Калькулятор маржинальности и НДС</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Калькулятор маржинальности, наценки и НДС</h1>
+      <p class="subtitle">Рассчитайте чистую прибыль, маржу и НДС с единицы товара</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="calc-card">
+      <form id="calcForm" novalidate>
+        <fieldset>
+          <legend>Товар и закупка</legend>
+
+          <div class="field">
+            <label for="purchasePrice">Закупочная цена, ₽/шт</label>
+            <input type="text" id="purchasePrice" name="purchasePrice" inputmode="decimal" placeholder="например: 450">
+            <span class="error-msg" data-for="purchasePrice"></span>
+          </div>
+
+          <div class="field">
+            <label for="logisticsCost">Логистика до склада, ₽/шт</label>
+            <input type="text" id="logisticsCost" name="logisticsCost" inputmode="decimal" placeholder="например: 40">
+            <span class="error-msg" data-for="logisticsCost"></span>
+          </div>
+
+          <div class="field">
+            <label for="packagingCost">Упаковка и маркировка, ₽/шт</label>
+            <input type="text" id="packagingCost" name="packagingCost" inputmode="decimal" placeholder="например: 15">
+            <span class="error-msg" data-for="packagingCost"></span>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Комиссии и расходы площадки</legend>
+
+          <div class="field">
+            <label for="commissionPercent">Комиссия площадки, %</label>
+            <input type="text" id="commissionPercent" name="commissionPercent" inputmode="decimal" placeholder="например: 15">
+            <span class="error-msg" data-for="commissionPercent"></span>
+          </div>
+
+          <div class="field">
+            <label for="platformLogistics">Логистика площадки, ₽/шт</label>
+            <input type="text" id="platformLogistics" name="platformLogistics" inputmode="decimal" placeholder="например: 60">
+            <span class="error-msg" data-for="platformLogistics"></span>
+          </div>
+
+          <div class="field">
+            <label for="adCost">Реклама (ДРР), ₽/шт</label>
+            <input type="text" id="adCost" name="adCost" inputmode="decimal" placeholder="например: 30">
+            <span class="error-msg" data-for="adCost"></span>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Налоги</legend>
+
+          <div class="field">
+            <label for="taxRate">Ставка налога / НДС, %</label>
+            <input type="text" id="taxRate" name="taxRate" inputmode="decimal" placeholder="например: 20">
+            <span class="error-msg" data-for="taxRate"></span>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Цена продажи</legend>
+
+          <div class="field">
+            <label for="salePrice">Цена продажи, ₽</label>
+            <input type="text" id="salePrice" name="salePrice" inputmode="decimal" placeholder="например: 990">
+            <span class="error-msg" data-for="salePrice"></span>
+          </div>
+
+          <div class="field">
+            <label for="discountPercent">Скидка, %</label>
+            <input type="text" id="discountPercent" name="discountPercent" inputmode="decimal" placeholder="например: 10">
+            <span class="error-msg" data-for="discountPercent"></span>
+          </div>
+        </fieldset>
+
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">Рассчитать</button>
+          <button type="reset" class="btn btn-secondary" id="resetBtn">Сбросить</button>
+        </div>
+      </form>
+
+      <div class="result" id="result" hidden>
+        <h2>Результат расчёта</h2>
+        <ul class="result-list">
+          <li><span>Цена с учётом скидки:</span> <strong id="resFinalPrice">—</strong></li>
+          <li><span>Себестоимость (с комиссиями):</span> <strong id="resCost">—</strong></li>
+          <li><span>Налог / НДС:</span> <strong id="resTax">—</strong></li>
+          <li><span>Чистая прибыль:</span> <strong id="resProfit">—</strong></li>
+          <li><span>Маржинальность:</span> <strong id="resMargin">—</strong></li>
+          <li><span>Наценка:</span> <strong id="resMarkup">—</strong></li>
+        </ul>
+        <p class="verdict" id="resVerdict"></p>
+      </div>
+    </section>
+
+    <section class="journal-card">
+      <div class="journal-header">
+        <h2>Журнал запросов</h2>
+        <button type="button" class="btn btn-danger" id="clearJournalBtn">Очистить журнал</button>
+      </div>
+      <ul class="journal-list" id="journalList"></ul>
+      <p class="journal-empty" id="journalEmpty">Журнал пуст — сделайте первый расчёт.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Калькулятор маржинальности и НДС</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
