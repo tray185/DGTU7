@@ -1,0 +1,366 @@
+/* ===== Базовые настройки ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+  --danger: #dc2626;
+  --danger-dark: #991b1b;
+  --success: #16a34a;
+  --bg: #f1f5f9;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+  --radius: 12px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* ===== Header ===== */
+.site-header {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff;
+  padding: 28px 0;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow);
+}
+
+.site-header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.site-header .subtitle {
+  margin-top: 6px;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* ===== Cards ===== */
+.calc-card,
+.journal-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+/* ===== Fieldset ===== */
+fieldset {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 18px;
+}
+
+legend {
+  font-weight: 600;
+  padding: 0 8px;
+  color: var(--primary-dark);
+  font-size: 0.95rem;
+}
+
+/* ===== Fields ===== */
+.field {
+  margin-bottom: 14px;
+}
+
+.field:last-child {
+  margin-bottom: 0;
+}
+
+.field label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.field input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #f8fafc;
+  color: var(--text);
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.field input.invalid {
+  border-color: var(--danger);
+  background: #fef2f2;
+}
+
+.field input.invalid:focus {
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+}
+
+/* ===== Error messages ===== */
+.error-msg {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: var(--danger);
+  min-height: 1.1em;
+  font-weight: 500;
+}
+
+/* ===== Buttons ===== */
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 22px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.05s;
+  text-decoration: none;
+  text-align: center;
+  font-family: inherit;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+.btn-secondary {
+  background: #e2e8f0;
+  color: var(--text);
+}
+.btn-secondary:hover {
+  background: #cbd5e1;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: #fff;
+  font-size: 0.9rem;
+  padding: 8px 16px;
+}
+.btn-danger:hover {
+  background: var(--danger-dark);
+}
+
+/* ===== Result block ===== */
+.result {
+  margin-top: 24px;
+  padding: 20px;
+  border-radius: var(--radius);
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+}
+
+.result h2 {
+  font-size: 1.15rem;
+  margin-bottom: 14px;
+  color: var(--success);
+}
+
+.result-list {
+  list-style: none;
+}
+
+.result-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dashed #d1fae5;
+  font-size: 0.98rem;
+}
+
+.result-list li:last-child {
+  border-bottom: none;
+}
+
+.result-list li strong {
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.verdict {
+  margin-top: 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* ===== Journal ===== */
+.journal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.journal-header h2 {
+  font-size: 1.2rem;
+}
+
+.journal-list {
+  list-style: none;
+  max-height: 480px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.journal-item {
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.journal-item.error-log {
+  border-left-color: var(--danger);
+  background: #fef2f2;
+}
+
+.journal-item .journal-time {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.journal-item .journal-line {
+  margin: 2px 0;
+}
+
+.journal-item .journal-line strong {
+  color: var(--text);
+}
+
+.journal-empty {
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 0.92rem;
+}
+
+/* ===== 404 page ===== */
+.error-page {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.error-code {
+  font-size: 5rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.error-page h2 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+}
+
+.error-text {
+  color: var(--text-muted);
+  max-width: 480px;
+  margin: 0 auto 24px;
+}
+
+/* ===== Footer ===== */
+.site-footer {
+  margin-top: auto;
+  background: #0f172a;
+  color: #94a3b8;
+  padding: 18px 0;
+  text-align: center;
+  font-size: 0.88rem;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Адаптив ===== */
+@media (max-width: 640px) {
+  .site-header {
+    padding: 20px 0;
+    margin-bottom: 18px;
+  }
+  .site-header h1 {
+    font-size: 1.25rem;
+  }
+  .calc-card,
+  .journal-card {
+    padding: 16px;
+  }
+  fieldset {
+    padding: 12px;
+  }
+  .actions {
+    flex-direction: column;
+  }
+  .btn {
+    width: 100%;
+  }
+  .result-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+  .error-code {
+    font-size: 3.5rem;
+  }
+}
